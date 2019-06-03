@@ -10,6 +10,7 @@ const port = process.env.PORT || 4000;
 
 app
   //sanity check cors goes before BODYPARSER
+
   .use(bodyParser.json())
   .use(usersRouter)
   .use(authRouter)
