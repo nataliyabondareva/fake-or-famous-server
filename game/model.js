@@ -1,12 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db');
-
-/*
-GAME TABLE                
-id    winnner    STATUS        
-KEY    F. KEY    PENDING???  
-*/
-
+const User = require('../users/model')
 
 const Game = sequelize.define('games', {
   winner: {
@@ -25,5 +19,7 @@ const Game = sequelize.define('games', {
     tableName: 'games'
   }
 );
+
+User.belongsTo(Game)
 
 module.exports = Game;

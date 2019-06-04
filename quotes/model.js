@@ -1,12 +1,9 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db');
+const Author = require('../author/model')
+const Game = require('../game/model')
+const User = require('../users/model')
 
-/*
-QUOTES TABLE                
-id    content    authorId    real    game_id
-KEY    STRING    F. KEY    BOOLEAN    F. KEY
-
-*/
 const Quote = sequelize.define('quotes', {
   content: {
     type: Sequelize.STRING,
@@ -39,5 +36,9 @@ const Quote = sequelize.define('quotes', {
     tableName: 'quotes'
   }
 );
+
+Author.belongsTo(Quote)
+Game.belongsTo(Quote)
+User.belongsTo(Quote)
 
 module.exports = Quote;
