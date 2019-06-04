@@ -18,6 +18,11 @@ const Quote = sequelize.define('quotes', {
     field: 'authorId',
     allowNull: false
   },
+  userId: {
+    type: Sequelize.INTEGER,
+    field: 'userId',
+    allowNull: false
+  },
   real: {
     type: Sequelize.BOOLEAN,
     field: 'real',
