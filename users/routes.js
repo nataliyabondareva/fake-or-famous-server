@@ -7,8 +7,9 @@ const router = new Router();
 
 /// endpoint working
 //http :4000/users email=a@b.com password=123 password_confirmation=123
+// http :4000/users email=b@a.com password=321 password_confirmation=321
 
-router.post('/users', (req, res) => {
+router.post('/users', (req, res, next) => {
   const { email, password, password_confirmation } = req.body;
   if (password !== password_confirmation)
     return res.status(422).send({
