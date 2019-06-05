@@ -32,6 +32,20 @@ router.get('/games/:id', function (req, res, next) {
     .catch(err => next(err))
 })
 
+// http :4000/quotes
+router.get('/quotes', function (req, res, next) {
+  const limit = req.query.limit || 9
+  const offset = req.query.offset || 0
+  Quote.findAll({
+    limit, offset
+  })
+  .then(console.log('work'))
+    .then(quotes => {
+      res.json(quotes)
+    })
+    .catch(err => next(err))
+})
+
 router.use(bodyParser.json())
 
 /*
