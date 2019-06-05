@@ -37,7 +37,7 @@ const Quote = sequelize.define('quotes', {
   }
 );
 
-Author.belongsTo(Quote)
+// Author.belongsTo(Quote)
 Game.belongsTo(Quote)
 User.belongsTo(Quote)
 
