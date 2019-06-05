@@ -10,9 +10,14 @@ const Quote = sequelize.define('quotes', {
     field: 'content',
     allowNull: true
   },
-  authorId: {
-    type: Sequelize.INTEGER,
-    field: 'authorId',
+  author: {
+    type: Sequelize.STRING,
+    field: 'author',
+    allowNull: true
+  },
+  picture: {
+    type: Sequelize.STRING,
+    field: 'picture',
     allowNull: true
   },
   userId: {
