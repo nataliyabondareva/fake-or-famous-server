@@ -8,27 +8,27 @@ const Quote = sequelize.define('quotes', {
   content: {
     type: Sequelize.STRING,
     field: 'content',
-    allowNull: false
+    allowNull: true
   },
   authorId: {
     type: Sequelize.INTEGER,
     field: 'authorId',
-    allowNull: false
+    allowNull: true
   },
   userId: {
     type: Sequelize.INTEGER,
     field: 'userId',
-    allowNull: false
+    allowNull: true
   },
   real: {
     type: Sequelize.BOOLEAN,
     field: 'real',
-    allowNull: false
+    allowNull: true
   },
   gameId: {
     type: Sequelize.INTEGER,
     field: 'gameId',
-    allowNull: false
+    allowNull: true
   }
 },
   {
