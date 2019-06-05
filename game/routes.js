@@ -37,12 +37,13 @@ router.use(bodyParser.json())
 /*
 Game.create({
   winner: "1",
-  status: "Whatever"
+  status: "lobby"
 }).then(game => console.log(`The Game was created. The ID = ${game.id}`));
 */
 
 // http :4000/games winner=5 status=test 
 router.post('/games', function (req, res, next) {
+  req.body.status = `lobby`
   Game
     .create(req.body)
     .then(game => {
