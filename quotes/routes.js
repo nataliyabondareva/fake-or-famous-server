@@ -1,5 +1,4 @@
 const { Router } = require('express');
-
 const Quote = require('./model');
 const bodyParser = require('body-parser')
 const router = new Router();

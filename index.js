@@ -31,13 +31,13 @@ app.use(router)
 io.on(
   'connection',
   client => {
-    console.log('client.id test:', client.id)
+    console.log('client.id test  index.js:', client.id)
 
     dispatch(messages)
 
     client.on(
       'disconnect',
-      () => console.log('disconnect test:', client.id)
+      () => console.log('disconnect test index.js:', client.id)
     )
   }
 )
