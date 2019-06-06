@@ -1,7 +1,7 @@
 module.exports = function dispatcher (io) {
   return function dispatch (payload) {
     const action = {
-      type: 'MESSAGES',
+      type: 'USER_LOGIN',
       payload
     }
 
