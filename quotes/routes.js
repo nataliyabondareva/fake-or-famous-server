@@ -34,6 +34,7 @@ router.get('/quotes/:id', function (req, res, next) {
 
 router.use(bodyParser.json())
 
+// http POST :4000/quotes content='Be yourself; everyone else is already taken' author='Oscar Wilde' picture="https://en.wikiquote.org/wiki/Oscar_Wilde#/media/File:Oscar_Wilde_3g07095u-adjust.jpg"  real=true gameId=1
 router.post('/quotes', function (req, res, next) {
   Quote
     .create(req.body)
