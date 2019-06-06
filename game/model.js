@@ -6,12 +6,12 @@ const Game = sequelize.define('games', {
   winner: {
     type: Sequelize.INTEGER,
     field: 'winner',
-    allowNull: false
+    allowNull: true
   },
   status: {
     type: Sequelize.STRING,
     field: 'status',
-    allowNull: false
+    allowNull: true
   }
 },
   {
