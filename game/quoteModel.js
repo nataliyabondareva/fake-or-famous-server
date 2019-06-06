@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db');
-const Author = require('../author/model')
-const Game = require('../game/model')
+const Game = require('./model')
 const User = require('../users/model')
 
 const Quote = sequelize.define('quotes', {
@@ -20,21 +19,11 @@ const Quote = sequelize.define('quotes', {
     field: 'picture',
     allowNull: true
   },
-  userId: {
-    type: Sequelize.INTEGER,
-    field: 'userId',
-    allowNull: true
-  },
   real: {
     type: Sequelize.BOOLEAN,
     field: 'real',
     allowNull: true
   },
-  gameId: {
-    type: Sequelize.INTEGER,
-    field: 'gameId',
-    allowNull: true
-  }
 },
   {
     timestamps: false,
@@ -42,8 +31,16 @@ const Quote = sequelize.define('quotes', {
   }
 );
 
-// Author.belongsTo(Quote)
-Game.belongsTo(Quote)
-User.belongsTo(Quote)
+/*
+  User.associate = function(models) {
+    models.User.hasMany(models.Task);
+  };
+
+*/
+Quote.associate = function (models) {
+  models.Game.hasMany(models.Game)
+}
+// Quote.belongsTo(Game)
+Quote.belongsTo(User)
 
 module.exports = Quote;
