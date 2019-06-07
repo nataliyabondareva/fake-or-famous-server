@@ -4,6 +4,10 @@ const Game = require('./model');
 const router = new Router();
 const bodyParser = require('body-parser')
 
+console.log('routes Game test:', Game)
+
+// const GameModel = game(sequelize)
+
 // http :4000/games
 router.get('/games', function (req, res, next) {
   const limit = req.query.limit || 9
@@ -32,29 +36,13 @@ router.get('/games/:id', function (req, res, next) {
     .catch(err => next(err))
 })
 
-// // http :4000/quotes
-// router.get('/quotes', function (req, res, next) {
-//   const limit = req.query.limit || 9
-//   const offset = req.query.offset || 0
-//   Quote.findAll({
-//     limit, offset
-//   })
-//   .then(console.log('work'))
-//     .then(quotes => {
-//       res.json(quotes)
-//     })
-//     .catch(err => next(err))
-// })
-
 router.use(bodyParser.json())
-
 /*
 Game.create({
   winner: "1",
   status: "lobby"
 }).then(game => console.log(`The Game was created. The ID = ${game.id}`));
 */
-
 // http :4000/games winner=5 status=test 
 router.post('/games', function (req, res, next) {
   req.body.status = `lobby`

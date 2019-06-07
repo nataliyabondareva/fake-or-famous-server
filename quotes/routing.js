@@ -5,6 +5,9 @@ const bodyParser = require('body-parser')
 const jwt = require('../auth/jwt')
 
 console.log('routes Quote test:', Quote)
+console.log('routing games', Game)
+
+
 
 function quotesRouting(dispatch) {
   const router = new Router();

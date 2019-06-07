@@ -5,8 +5,7 @@ const socketIo = require('socket.io')
 const usersRouter = require('./users/routes');
 const authRouter = require('./auth/routes');
 const quotesRouting = require('./quotes/routing')
-// const authorRouter = require('./author/routes')
-//const gameRouter = require('./game/routes')
+const gameRouter = require('./game/routes')
 const dispatcher = require('./dispatcher')
 const routing = require('./routing')
 const app = express();
@@ -25,8 +24,8 @@ app
   .use(usersRouter)
   .use(authRouter)
   .use(quotesRouter)
-// .use(authorRouter)
-//.use(gameRouter)
+  // .use(authorRouter)
+  .use(gameRouter)
 
 io.on(
   'connection',
