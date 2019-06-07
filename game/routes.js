@@ -7,7 +7,6 @@ const User = require('../users/model')
 const auth = require('../auth/middleware');
 const Quote = require('../quotes/model')
 
-
 // http :4000/games
 router.get('/games', function (req, res, next) {
   const limit = req.query.limit || 9
@@ -63,7 +62,7 @@ router.post('/games', function (req, res, next) {
 router.put('/games/:id', auth, function (req, res, next) {
   console.log('req.user test:', req.user)
   const gameId = req.params.id
-
+// find the game byId 
   Game
     .findByPk(gameId)
     .then(game => {
