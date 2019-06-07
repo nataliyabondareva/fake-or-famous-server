@@ -30,11 +30,6 @@ const Quote = sequelize.define('quotes', {
     field: 'real',
     allowNull: true
   },
-  gameId: {
-    type: Sequelize.INTEGER,
-    field: 'gameId',
-    allowNull: true
-  }
 },
   {
     timestamps: false,

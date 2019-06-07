@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const Quote = require('./model');
+const Game = require('../game/model');
 const bodyParser = require('body-parser')
 const router = new Router();
 
@@ -7,16 +8,15 @@ const router = new Router();
 router.get('/quotes', function (req, res, next) {
   const limit = req.query.limit || 9
   const offset = req.query.offset || 0
-  Quote.findAll({
-    limit, offset
-  })
+   Quote.findAll({
+     limit, offset
+   })
     .then(quotes => {
       res.json(quotes)
     })
     .catch(err => next(err))
 })
 
-// http :4000/games/1
 router.get('/quotes/:id', function (req, res, next) {
   const id = req.params.id
   Quote.findByPk(id)
@@ -27,6 +27,21 @@ router.get('/quotes/:id', function (req, res, next) {
         })
       }
       return res.send(quote)
+    })
+    .catch(err => next(err))
+})
+
+// http :4000/games/1
+router.get('/games/:id', function (req, res, next) {
+  const id = req.params.id
+  Game.findByPk(id)
+    .then(game => {
+      if (!game) {
+        return res.status(404).send({
+          message: `Quote does not exit`
+        })
+      }
+      return res.send(game)
     })
     .catch(err => next(err))
 })

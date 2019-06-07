@@ -8,6 +8,11 @@ const Game = sequelize.define('games', {
     field: 'winner',
     allowNull: true
   },
+  roundsPlayed: {
+    type: Sequelize.INTEGER,
+    field: 'roundsPlayed',
+    allowNull: true
+  },
   status: {
     type: Sequelize.STRING,
     field: 'status',
