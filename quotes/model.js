@@ -20,11 +20,6 @@ const Quote = sequelize.define('quotes', {
     field: 'picture',
     allowNull: true
   },
-  userId: {
-    type: Sequelize.INTEGER,
-    field: 'userId',
-    allowNull: true
-  },
   real: {
     type: Sequelize.BOOLEAN,
     field: 'real',
@@ -38,7 +33,9 @@ const Quote = sequelize.define('quotes', {
 );
 
 // Author.belongsTo(Quote)
-Game.belongsTo(Quote)
-User.belongsTo(Quote)
+Quote.belongsTo(Game)
+Quote.belongsTo(User)
+Game.hasMany(Quote)
+User.hasMany(Quote)
 
 module.exports = Quote;

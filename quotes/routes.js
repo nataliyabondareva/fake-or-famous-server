@@ -17,6 +17,7 @@ router.get('/quotes', function (req, res, next) {
     .catch(err => next(err))
 })
 
+//get single quote
 router.get('/quotes/:id', function (req, res, next) {
   const id = req.params.id
   Quote.findByPk(id)
@@ -31,17 +32,17 @@ router.get('/quotes/:id', function (req, res, next) {
     .catch(err => next(err))
 })
 
-// http :4000/games/1
-router.get('/games/:id', function (req, res, next) {
-  const id = req.params.id
-  Game.findByPk(id)
-    .then(game => {
-      if (!game) {
+router.post('/quotes/:id', function (req, res, next) {
+  req.body.quote.gameId = req.body.gameId
+  Quote
+    .create(req.body.quote)
+    .then(quote => {
+      if (!quote) {
         return res.status(404).send({
-          message: `Quote does not exit`
+          message: `Something went wrong`
         })
       }
-      return res.send(game)
+      return res.status(201).send(quote)
     })
     .catch(err => next(err))
 })

@@ -26,5 +26,6 @@ const Game = sequelize.define('games', {
 );
 
 User.belongsTo(Game)
+Game.hasMany(User)
 
 module.exports = Game;
