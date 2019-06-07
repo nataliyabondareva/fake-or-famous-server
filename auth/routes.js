@@ -11,6 +11,7 @@ const router = new Router();
 // http :4000/logins email=a@b.com password=123
 
 router.post('/logins', (req, res) => {
+  console.log('logins test!')
   const { email, password } = req.body;
   if (email && password) {
     User.findOne({ where: { email } })
@@ -36,5 +37,6 @@ router.post('/logins', (req, res) => {
     });
   }
 });
+
 
 module.exports = router;
