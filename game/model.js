@@ -15,9 +15,13 @@ const Game = sequelize.define('games', {
   },
   status: {
     type: Sequelize.STRING,
-    field: 'status',
     allowNull: true
-  }
+  },
+  prompt: {
+    type: Sequelize.STRING,
+    allowNull: true,
+    defaultValue: "What's the funniest thing you've heard this week?"
+  },
 },
   {
     timestamps: false,

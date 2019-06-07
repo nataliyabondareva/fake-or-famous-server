@@ -4,6 +4,7 @@ const Game = require('../game/model');
 const User = require('../users/model')
 const bodyParser = require('body-parser')
 const router = new Router();
+const auth = require('../auth/middleware')
 
 // http :4000/quotes
 router.get('/quotes', function (req, res, next) {
@@ -36,9 +37,11 @@ router.get('/quotes/:id', function (req, res, next) {
 router.use(bodyParser.json())
 
 // http POST :4000/quotes content='Be yourself; everyone else is already taken' author='Oscar Wilde' picture="https://en.wikiquote.org/wiki/Oscar_Wilde#/media/File:Oscar_Wilde_3g07095u-adjust.jpg"  real=true gameId=1
-router.post('/quotes', function (req, res, next) {
+router.post('/quotes', auth, function (req, res, next) {
+  console.log('req.body test:', req.body)
+  console.log('req.user test:', req.user)
   req.body.quote.gameId = req.body.gameId
-  req.body.quote.userId = req.body.userId
+  req.body.quote.userId = req.user.id
   console.log('req.body.quote test:', req.body.quote)
   Quote
     .create(req.body.quote)
