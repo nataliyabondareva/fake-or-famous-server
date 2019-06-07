@@ -5,37 +5,23 @@ const User = require('./model');
 
 const router = new Router();
 
-/// endpoint working
-//http :4000/users email=a@b.com password=123 password_confirmation=123
 
-router.post('/users', (req, res) => {
-  const { email, password, password_confirmation } = req.body;
-  if (password !== password_confirmation)
-    return res.status(422).send({
-      message: 'Passwords do not match.'
-    });
-  User.findOne({ where: { email } })
-    .then(entity => {
-      if (entity) {
-        return res
-          .status(422)
-          .send({ message: 'User with that email already exists.' });
+router.post('/users', function (req, res, next) {
+  const user = {
+    email: req.body.email,
+    password: bcrypt.hashSync(req.body.password, 10)
+  }
+  User
+    .create(user)
+    .then(user => {
+      if (!user) {
+        return res.status(404).send({
+          message: `User does not exist`
+        })
       }
-      if (email && password) {
-        const user = {
-          email,
-          password: bcrypt.hashSync(password, 10)
-        };
-        return User.create(user)
-          .then(res.status(201).send({ message: 'User created' }))
-          .catch(error => next(error));
-      } else {
-        return res.status(422).send({
-          message: 'Please supply a valid email and password'
-        });
-      }
+      return res.status(201).json(user)
     })
-    .catch(error => next(error));
-});
+    .catch(err => next(err))
+})
 
 module.exports = router;
