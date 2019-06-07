@@ -40,12 +40,3 @@ io.on(
     )
   }
 )
-
-// io.on('connect', socket => {
-//   const userId = socket.request.user.id
-//   console.log(`User ${userId} just connected`)
-
-//   socket.on('disconnect', () => {
-//     console.log(`User ${userId} just disconnected`)
-//   })
-// })
